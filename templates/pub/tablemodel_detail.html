@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <div class="pub-booking pub-div-border">
+        <h2>Номер стола: {{ tablemodel.id }}</h2>
+        <h2>Количество мест: {{ tablemodel.max_person_count }}</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_booked_date">Время бронирования</label>
+                <input type="datetime-local" name="booked_date">
+                {% if form.err.past %}
+                <span class="err-span">{{ form.err.msg_past }}</span>
+                {% elif form.err.booked %}
+                <span class="err-span">{{ form.err.msg_booked }}</span>
+                {% elif form.err.empty_date %}
+                <span class="err-span">{{ form.err.msg_empty_date }}</span>
+                {% endif %}
+            </p>
+            <p>
+                <label for="id_person_count">Количество человек</label>
+                <input type="number" name="person_count" value="{{ tablemodel.max_person_count }}">
+                {% if form.err.to_many %}
+                <span class="err-span">{{ form.err.msg_to_many }}</span>
+                {% elif form.err.negative %}
+                <span class="err-span">{{ form.err.msg_negative }}</span>
+                {% endif %}
+            </p>
+            <input type="submit" value="Забронировать">
+        </form>
+        {% if bookings %}
+        <h3>Уже занятое время</h3>
+        <ul>
+            {% for booking in bookings %}
+                <li>
+                    {{ booking.booked_date }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h3>Бронирований еще нет</h3>
+        {% endif %}
+    </div>
+{% endblock %}

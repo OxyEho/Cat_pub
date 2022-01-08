@@ -1,0 +1,51 @@
+[
+  {
+    "model": "pub.TableModel",
+    "pk": 1,
+    "fields": {
+      "max_person_count": 6
+    }
+  },
+  {
+    "model": "pub.TableModel",
+    "pk": 2,
+    "fields": {
+      "max_person_count": 6
+    }
+  },
+  {
+    "model": "pub.TableModel",
+    "pk": 3,
+    "fields": {
+      "max_person_count": 4
+    }
+  },
+  {
+    "model": "pub.TableModel",
+    "pk": 4,
+    "fields": {
+      "max_person_count": 4
+    }
+  },
+  {
+    "model": "pub.TableModel",
+    "pk": 5,
+    "fields": {
+      "max_person_count": 4
+    }
+  },
+    {
+    "model": "pub.TableModel",
+    "pk": 6,
+    "fields": {
+      "max_person_count": 6
+    }
+  },
+    {
+    "model": "pub.TableModel",
+    "pk": 7,
+    "fields": {
+      "max_person_count": 4
+    }
+  }
+]

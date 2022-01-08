@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <div class="pub-booking pub-div-border">
+        {% if booked %}
+            <h2 style="text-align: center">Сохраните Id бронирования!</h2>
+            <h3>Id бронирования: {{ booked.booked_uid }}</h3>
+            <h3>Номер столика: {{ booked.table_id }}</h3>
+            <h3>Время и дата бронирования: {{ booked.booked_date }}</h3>
+            <h3>Количество человек: {{ booked.person_count }}</h3>
+        {% else %}
+            <h1>Такого бронирования нет</h1>
+        {% endif %}
+    </div>
+{% endblock %}

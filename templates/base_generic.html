@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Pub</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+    {#  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+    {#  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+
+    <!-- Добавление дополнительного статического CSS файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/pub_styles.css' %}">
+</head>
+
+<body>
+<div class="header-container pub-div-border">
+
+    <div class="pub-sidebar">
+        {% block sidebar %}
+            <ul class="pub-sidebar-nav">
+                <li><a href="{% url 'index' %}">На главную</a></li>
+            </ul>
+        {% endblock %}
+    </div>
+    <div class="pub-post-header">
+        <h1>Cat pub</h1>
+        <h3>Самый пушистый паб на Земле</h3>
+    </div>
+    <div class="pub-search">
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="id бронирования" name="booked_id">
+            <button type="submit"></button>
+        </form>
+    </div>
+</div>
+<div class="pub-content-container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
