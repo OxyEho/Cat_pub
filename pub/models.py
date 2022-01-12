@@ -7,7 +7,7 @@ from django.db import models
 
 class BookedModel(models.Model):
     booked_date = models.DateTimeField()
-    booked_uid = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    booked_uid = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     table_id = models.IntegerField()
     person_count = models.IntegerField()
 
