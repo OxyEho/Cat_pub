@@ -11,9 +11,6 @@ class BookedModel(models.Model):
     table_id = models.IntegerField()
     person_count = models.IntegerField()
 
-    class Meta:
-        unique_together = (('booked_date', 'table_id'),)
-
 
 class TableModel(models.Model):
     id = models.IntegerField(primary_key=True)
