@@ -18,7 +18,9 @@ class FormEntity:
         if self.booked_date < datetime.datetime.now():
             self.err.past = True
             return False
-        query_set = BookedModel.objects.filter(table_id=self.table_id, booked_date=self.booked_date)
+        query_set = BookedModel.objects.filter(table_id=self.table_id,
+                                               booked_date__lt=self.booked_date + datetime.timedelta(hours=1),
+                                               booked_date__gt=self.booked_date - datetime.timedelta(hours=1))
         if query_set:
             self.err.booked = True
             return False
